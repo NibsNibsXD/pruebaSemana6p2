@@ -109,10 +109,11 @@ public class MyFile {
     // Aqui version 1 para sobreescribir el arcnivo,aqui uso FileWriter
     void escribirArchivo() {
         if (myFile.exists() && myFile.isFile()) {
+            
             try (FileWriter fw = new FileWriter(myFile)) {
                 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Ingrese el texto a escribir en el archivo (se sobreescribirá):");
+                System.out.println("Ingrese el texto nuevo, el texto anterior se perdera ");
                 
                 String texto = sc.nextLine();
                 fw.write(texto);
@@ -127,7 +128,29 @@ public class MyFile {
     }
 
     
-    
+        // Aqui la version 2, pero aqui uso BufferedWriter
+    void anadirArchivo() {
+        if (myFile.exists() && myFile.isFile()) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(myFile, true))) {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Ingrese el texto a añadir al archivo:");
+                String texto = sc.nextLine();
+                
+                bw.write(texto);
+                bw.newLine(); 
+                
+                System.out.println("Texto agregado sin sibrescbribir exitosamente.");
+                
+                
+            } catch (IOException e) {
+                
+                System.out.println("Error al añadir al archivo: " + e.getMessage());
+                
+            }
+        } else {
+            System.out.println("El archivo no existe o no es un archivo regular.");
+        }
+    }
 
 
     
@@ -156,7 +179,27 @@ public class MyFile {
     }
 
     
-
+    
+    
+        // Aqui la version 2, uso BufferedReadear
+    void leerArchivoConBufferedReader() {
+        if (myFile.exists() && myFile.isFile()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(myFile))) {
+                
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    System.out.println(linea);
+                }
+            } catch (IOException e) {
+                System.out.println("Error al leer el archivo: " + e.getMessage());
+            }
+        } else {
+            
+            System.out.println("El archivo no existe o no es un archivo regular.");
+            
+        }
+    }
+    
     
     
 }

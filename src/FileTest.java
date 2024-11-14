@@ -25,8 +25,8 @@ public class FileTest {
             System.out.println("3- Crear Archivo");
             System.out.println("4- Crear Folder");
             System.out.println("5- Borrar Archivo/Folder");
-            System.out.println("6- Escribir en archivo/sobreescribir (FileWriter)");
-            System.out.println("7- Añadir al archivo    (BuffererdWriter)" );
+            System.out.println("6- sobreescribir todo el texto en el archivo (FileWriter)");
+            System.out.println("7- Añadir texto sin sobreescribir   (BuffererdWriter)" );
             System.out.println("8- Leer archivo (FileReader)");
             System.out.println("9- Leer archivo (BufferedReader)");
             System.out.println("10- Salir");
@@ -86,7 +86,7 @@ public class FileTest {
                         
                         
                     case 7:
-                        //pendiente v2 de write
+                        myFile.anadirArchivo();
                         
                         break;
 
@@ -98,8 +98,7 @@ public class FileTest {
 
                         
                     case 9:
-                        //caso 9, version 9 del reader
-                        
+                        myFile.leerArchivoConBufferedReader();
                         break;
                         
 
